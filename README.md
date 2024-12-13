@@ -61,6 +61,54 @@ Pseudo Code
          
          The only extra space used is for the recursion stack during the Heapify operation. The maximum depth of recursion is the height of the binary heap, which is : O(logn).
          Space Complexity: O(1) for the array and O(logn) for the recursion stack.
+
+
+         *************************************************************************************************************************************************************************
+
+
+
+         # Kruskal-s-algorithm
+# Part (a): Write all required algorithms for MST using Kruskal's Algorithm
+## Part (a): Write all required algorithms for MST using Kruskal's Algorithm
+
+      1)Key Components of Kruskal’s Algorithm:
+          → Graph Representation: Define the graph using an edge list where each edge includes (source, destination, weight).
+          → Sort Edges: Sort all edges in non-decreasing order of weight.
+          → Union-Find Data Structure: Use a union-find (disjoint-set) data structure to manage connected components.
+          → Iterative Edge Selection: Add edges to the MST while ensuring no cycles are formed.
+
+      2)Algorithms Needed:
+          ►Edge Class:
+             Represents an edge with:
+              → Source: Starting vertex.
+              → Destination: Ending vertex.
+              → Weight: The cost of the edge.
+              → Implements IComparable to allow sorting edges by weight.
+        
+          ► Union-Find Operations:
+              → Find: Determine the root of a set.
+              → Union: Merge two sets.
+              → Path compression and union by rank for optimization.
+          ► Kruskal’s Algorithm:
+              → Initialize the MST as an empty set.
+              → Sort the edges by weight.
+              → Process edges in ascending weight order, using the union-find to check for cycles.
+              → Add valid edges to the MST until it contains V-1 edges (where V is the number of vertices).
       
-       
-       
+## 3)Algorithm:
+        KRUSKAL(G):
+        A = ∅
+        For each vertex v ∈ G.V:
+            MAKE-SET(v)
+        sort the edges of G.E into increasing order by weight
+        For each edge (u, v) ∈ G.E ordered by increasing order by weight(u, v):
+            if FIND-SET(u) ≠ FIND-SET(v):       
+            A = A ∪ {(u, v)}
+            UNION(u, v)
+        return A
+
+# Part(b). Analyze in detail your written algorithms in Part (a)
+## Part(b). Analyze in detail your written algorithms in Part (a)
+          ►Time complexity analysis
+             1)Time Complexity:
+                T(n) = O(1) + O(V) + O(E log E) + O(V log V)
